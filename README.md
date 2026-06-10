@@ -28,14 +28,41 @@ The class maintains two stacks and a standard string variable:
 
 ---
 
-## 💻 Code Overview & Usage
+## 🖥️ Example Usage & Console Output
 
-### Property Syntax Benefit
-Thanks to the property declaration, instead of writing verbose getter and setter methods, you can interact with the class object as if it were a native variable:
+To see this class in action, let's look at a standard execution inside a `main()` function:
 
 ```cpp
-clsMyString myStr;
+#include <iostream>
+#include "clsMyString.h"
 
-// Using the custom property extension
-myStr.value = "Hello";   // Automatically triggers set()
-cout << myStr.value;     // Automatically triggers get()
+using namespace std;
+
+int main() 
+{
+    clsMyString myStr;
+
+    // 1. Initial values
+    myStr.value = "Anwer";
+    myStr.value = "Anwer El-Sayed";
+    myStr.value = "Anwer El-Sayed (IT)";
+
+    cout << "========================================" << endl;
+    cout << "Current Value : " << myStr.value << endl;
+    cout << "========================================" << endl;
+
+    // 2. Testing Undo
+    cout << "\n--- Performing [Undo] Twice ---" << endl;
+    myStr.Undo();
+    cout << "After 1st Undo: " << myStr.value << endl;
+    myStr.Undo();
+    cout << "After 2nd Undo: " << myStr.value << endl;
+
+    // 3. Testing Redo
+    cout << "\n--- Performing [Redo] Once ---" << endl;
+    myStr.Redo();
+    cout << "After Redo    : " << myStr.value << endl;
+    cout << "========================================" << endl;
+
+    return 0;
+}
